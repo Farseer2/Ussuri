@@ -31,7 +31,7 @@ utility = {
 
 	table_contains = function(from, search)
 		for key, value in next, from do
-			if (value == search) then
+			if (value == search or (table_equals(search, value))) then
 				return true
 			end
 		end
@@ -40,7 +40,7 @@ utility = {
 	end,
 
 	table_equals = function(first, second)
-		if (second) then
+		if (second and type(first) == "table" and type(second) == "table") then
 			for key, value in pairs(first) do
 				local success = false
 
